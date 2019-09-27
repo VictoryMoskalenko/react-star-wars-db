@@ -1,14 +1,7 @@
+import React from 'react';
 
+import ReactDOM from 'react-dom';
 
+import App from './components/app';
 
-const swapi = new SwapiService();
-
-// swapi.getAllPeople().then((people) => {
-//     people.forEach((p) => {
-//      console.log(p.name);  
-//     }); 
-// });  //вывод списка всех персонажей
-
-swapi.getPerson(3).then((p) => {
-    console.log(p.name);
-});      //вывод одного персонажа
+ReactDOM.render(<App />, document.getElementById('root'));

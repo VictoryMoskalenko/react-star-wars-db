@@ -1,4 +1,4 @@
-//отдельный класс-сервис для работы с сетью
+
 export default class SwapiService {
 
     _apiBase = 'https://swapi.co/api';  

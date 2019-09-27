@@ -1,4 +1,4 @@
-import Reacr from 'react';
+import React from 'react';
 
 import './header.css';
 
@@ -7,7 +7,7 @@ const Header = () => {
         <div className="header d-flex">
             <h3>
                 <a href='#/'>
-                    StarWarsDB
+                    StarWars DB
                 </a>
             </h3>
             <ul className="d-flex">
@@ -23,7 +23,7 @@ const Header = () => {
             </ul>
             
         </div>
-    )
-}
+    );
+};
 
 export default Header;
