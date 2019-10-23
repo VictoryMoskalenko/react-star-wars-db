@@ -38,7 +38,7 @@ export default class SwapiService {
     }
   
     getStarship(id) {
-        return this.getResourse(`/starships/${id}/`)
+        return this.getResourse(`/starships/${id}/`);
     }
   
   }
