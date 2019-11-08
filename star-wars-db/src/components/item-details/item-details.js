@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './item-details.css';
-import SwapiService from '../../services/swapi-service';
+// import SwapiService from '../../services/swapi-service';
 import ErrorButton from '../error-button/error-button';
 
 const Record = ({item, field, label}) => {
@@ -19,7 +19,7 @@ export {
 
 export default class ItemDetails extends Component {
 
-    swapiService = new SwapiService();
+    // swapiService = new SwapiService();
 
    state = {
        item: null,
@@ -58,8 +58,7 @@ export default class ItemDetails extends Component {
         return <span>Select an item from a list</span>   
     }
 
-    const {id, name, gender, 
-        birthYear, eyeColor } = item;
+    const { name } = item;
 
        return (
            <div className="item-details card">
@@ -68,7 +67,7 @@ export default class ItemDetails extends Component {
                  alt="item" />
                 
                 <div className="card-body">
-                    <h4>{name} {this.props.personId}</h4>
+                    <h4>{name}</h4>
                     <ul className="list-group list-group-flush">
                         { 
                             React.Children.map(this.props.children, (child) => {

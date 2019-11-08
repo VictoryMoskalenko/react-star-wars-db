@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import ErrorButton from '../error-button';
-
 import './app.css';
-// import ErrorIndicator from '../error-indicator/error-indicator';
-// import PeoplePage from '../people-page/people-page';
-import ItemList from "../item-list/item-list";
+// import ItemList from "../item-list/item-list";
 import ItemDetails, { Record } from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
 import ErrorBoundry from '../error-boundry/error-boundry';
-import Row from "../row/row";
+import {
+    PersonDetails,
+    PlanetDetails,
+    StarshipDetails,
+    PersonList,
+    PlanetList,
+    StarshipList
+} from '../sw-components';
 
 
 export default class App extends Component {
@@ -31,19 +34,8 @@ export default class App extends Component {
         });
     };
 
-    // onPersonSelected = (selectedPerson) => {
-    //     this.setState({selectedPerson});
-    // };
-
-    // componentDidCatch() {
-    //     this.setState({hasError: true});
-    // }
-
+    
     render() {
-
-        // if (this.state.hasError) {
-        //     return <ErrorIndicator />
-        // }
 
         const planet = this.state.showRandomPlanet ?
             <RandomPlanet /> : null;
@@ -51,7 +43,11 @@ export default class App extends Component {
         const { getPerson,
                 getStarship,
                 getStarshipImage,
-                getPersonImage } = this.swapiService;
+                getPersonImage,
+                getPlanet,
+                getPlanetImage,
+                getAllPeople,
+                getAllPlanets } = this.swapiService;
         
         const personDetails = (
           <ItemDetails
@@ -61,6 +57,19 @@ export default class App extends Component {
 
             <Record field="gender" label="Gender" />
             <Record field="eyeColor" label="Eye Color" />
+
+          </ItemDetails>
+        )
+
+        const planetDetails = (
+          <ItemDetails
+            itemId={9}
+            getData={getPlanet}
+            getImageUrl={getPlanetImage} >
+
+            <Record field="population" label="Population" />
+            <Record field="rotationPeriod" label="Rtation Period" />
+            <Record field="diameter" label="Diameter" />
 
           </ItemDetails>
         )
@@ -76,17 +85,25 @@ export default class App extends Component {
           <Record field="costInCredits" label="Cost" />
 
           </ItemDetails>
-        )
+        );
 
             return (
               <ErrorBoundry>
                 <div className="stardb-app">
                   <Header />
 
-                  <Row 
-                    left={personDetails} 
-                    right={starshipDetails} />
+                  <PersonDetails itemId={11} />
 
+                  <PlanetDetails itemId={5} />
+
+                  <StarshipDetails itemId={9} />
+
+                  <PersonList />
+                     
+                  <PlanetList />
+                     
+                  <StarshipList />
+                
                 </div>
               </ErrorBoundry>
             );
