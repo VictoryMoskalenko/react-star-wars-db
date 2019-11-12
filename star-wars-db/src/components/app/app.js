@@ -8,8 +8,9 @@ import DummySwapiService from '../../services/dummy-swapi-service';
 import ErrorBoundry from '../error-boundry/error-boundry';
 import { SwapiServiceProvider } from '../swapi-service-context/swapi-service-context';
 import { PeoplePage, PlanetsPage, StarshipsPage, LoginPage, SecretPage } from '../pages'; 
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { StarshipDetails } from '../sw-components';
+
 
  
 
@@ -82,7 +83,7 @@ export default class App extends Component {
                       render={() => (
                         <SecretPage isLoggedIn={ isLoggedIn} />
                         )} />
-                      {/* <Redirect to="/" /> */}
+                      
                       <Route render={() => <h2>Page not found</h2>} />
                   </Switch>
                 </div>
