@@ -15,4 +15,9 @@ export const dec = () => ({type: 'DEC'});
 //   return {type: 'RND', payload }
 // }
 
-export const rnd = (payload) => ({ type: 'RND', payload });
+export const rnd = (payload) => {
+    return { 
+        type: 'RND', 
+        payload: Math.floor(Math.random()*10)
+    };
+};
