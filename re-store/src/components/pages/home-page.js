@@ -1,5 +1,6 @@
 import React from 'react';
 import BookList from '../book-list'; 
+import ShoppingCartTable from '../shopping-cart-table';
 
 const HomePage = () => {
     //test data
@@ -13,7 +14,11 @@ const HomePage = () => {
     //        author: 'Michael T. Nygard'}
     //  ];
   return (
+    <div>
       <BookList />
+      <ShoppingCartTable />
+    </div>
+      
   );
 };
 
