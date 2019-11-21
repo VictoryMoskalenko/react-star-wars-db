@@ -1,25 +1,37 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 
 import reducer from './reducers';
 
-const store = createStore(reducer);
-//monkey patching
+const logMiddleware = ({ getState }) => (next) => (action) => {
+    console.log(action.type, getState());
+    return next(action);
+};
 
-const originalDispatch = store.dispatch;
-
-store.dispatch = (action) => {
-
+const stringMiddleware = () => (next) => (action) => {
     if (typeof action === "string") {
-        return originalDispatch({
+        return next({
             type: action
         });
     }
-
-    return originalDispatch(action);
-
+    return next(action);
 };
 
+const store = createStore(reducer, applyMiddleware(
+    thunkMiddleware, stringMiddleware, logMiddleware));
 
-store.dispatch({type: 'HELLO_WORLD!'});
+// const myAction = (dispatch) => {
+//     setTimeout(() => dispatch({
+//        type: 'DELAYED_ACTION' 
+//     }), 2000);
+// };
+
+const delayedActionCreator = (timeout) => (dispatch) => {
+    setTimeout(() => dispatch({
+        type: 'DELAYED_ACTION' 
+     }), timeout);
+};
+
+store.dispatch(delayedActionCreator(3000));
 
 export default store;
